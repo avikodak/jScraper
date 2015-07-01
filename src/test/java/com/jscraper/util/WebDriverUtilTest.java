@@ -13,6 +13,8 @@ public class WebDriverUtilTest {
 		WebDriverDetails webDriverDetails = new WebDriverDetails();
 		webDriverDetails.setType(WebDriverType.HTML_UNIT);
 		WebDriver webDriver = WebDriverUtil.getWebDriver(webDriverDetails);
+		webDriver.get("http://www.google.com");
+		System.out.println(webDriver.getTitle());
 		if(ValidationUtil.isNull(webDriver)){
 			System.out.println("Test failed");
 		}else{

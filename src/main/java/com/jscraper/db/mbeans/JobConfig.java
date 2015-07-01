@@ -8,6 +8,7 @@ public class JobConfig implements Serializable {
 	private static final long serialVersionUID = 1151709703838672886L;
 	private WebDriverDetails webDriverDetails;
 	private Integer jobCount;
+	private String baseUrl;
 	private List<BaseAction> actionsList;
 
 	public WebDriverDetails getWebDriverDetails() {
@@ -24,6 +25,14 @@ public class JobConfig implements Serializable {
 
 	public void setJobCount(Integer jobCount) {
 		this.jobCount = jobCount;
+	}
+
+	public String getBaseUrl() {
+		return baseUrl;
+	}
+
+	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
 	}
 
 	public List<BaseAction> getActionsList() {

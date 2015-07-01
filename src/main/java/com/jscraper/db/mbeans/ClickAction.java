@@ -12,5 +12,5 @@ public class ClickAction extends BaseAction {
 	public void setElementSelector(ElementSelector elementSelector) {
 		this.elementSelector = elementSelector;
 	}
-
+	
 }

@@ -13,7 +13,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.jscraper.constants.WebDriverType;
-import com.jscraper.exceptions.ScraperWebDriverException;
+import com.jscraper.exceptions.WebScraperDriverException;
 import com.jscraper.util.ValidationUtil;
 
 public class WebDriverUtil {
@@ -74,7 +74,7 @@ public class WebDriverUtil {
 		return phantomJSDriver;
 	}
 	
-	public static WebDriver getWebDriver(WebDriverDetails webDriverDetails) throws ScraperWebDriverException{
+	public static WebDriver getWebDriver(WebDriverDetails webDriverDetails) throws WebScraperDriverException{
 		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(webDriverDetails);
 		if(webDriverDetails.getType().equalsIgnoreCase(WebDriverType.FIREFOX)){
 			return getFireFoxDriver(webDriverDetails, desiredCapabilities);
@@ -85,6 +85,6 @@ public class WebDriverUtil {
 		}else if(webDriverDetails.getType().equalsIgnoreCase(WebDriverType.GOOGLE_CHROME)){
 			return getChromeDriver(webDriverDetails, desiredCapabilities);
 		}
-		throw new ScraperWebDriverException("We only support firefox,phantom,chrome,htmlunit webdrivers");
+		throw new WebScraperDriverException("We only support firefox,phantom,chrome,htmlunit webdrivers");
 	}
 }	
