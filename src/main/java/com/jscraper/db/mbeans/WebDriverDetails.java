@@ -5,6 +5,7 @@ public class WebDriverDetails {
 	private String type;
 	private FileLocationDetails exeLocation;
 	private Boolean enableJS;
+	private Integer defaultTimeout;
 	private String browserName;
 	private String version;
 	private BrowsingLocationDetails proxyLocation;
@@ -56,6 +57,13 @@ public class WebDriverDetails {
 	public void setProxyLocation(BrowsingLocationDetails proxyLocation) {
 		this.proxyLocation = proxyLocation;
 	}
-	
-	
+
+	public Integer getDefaultTimeout() {
+		return defaultTimeout;
+	}
+
+	public void setDefaultTimeout(Integer defaultTimeout) {
+		this.defaultTimeout = defaultTimeout;
+	}
+
 }

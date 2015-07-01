@@ -68,7 +68,7 @@ public class WebDriverUtil {
 		HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
 		return htmlUnitDriver;
 	}
-	
+
 	private static WebDriver getPhantomJSDriver(WebDriverDetails webDriverDetails,DesiredCapabilities desiredCapabilities){
 		PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
 		return phantomJSDriver;
