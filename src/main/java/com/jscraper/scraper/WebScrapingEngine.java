@@ -7,10 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.jscraper.constants.ElementSelectorType;
+import com.jscraper.constants.NavigationType;
 import com.jscraper.db.mbeans.ClickAction;
 import com.jscraper.db.mbeans.ElementSelector;
 import com.jscraper.db.mbeans.IFrameSwitchAction;
-import com.jscraper.db.mbeans.RedirectionAction;
+import com.jscraper.db.mbeans.NavigationAction;
 import com.jscraper.exceptions.WebScrapingException;
 import com.jscraper.util.ValidationUtil;
 
@@ -50,16 +51,31 @@ public class WebScrapingEngine {
 		click(clickAction, webElements);
 	}
 
-	public static void redirection(RedirectionAction redirectionAction){
-		
-	}
-
-	public static void iframeSwitch(WebElement parentElement,IFrameSwitchAction iFrameSwitchAction) throws WebScrapingException{
-		
+	public static void navigation(WebDriver webDriver,NavigationAction navigationAction) throws WebScrapingException{
+		if(navigationAction.getType().equalsIgnoreCase(NavigationType.BACK)){
+			webDriver.navigate().back();
+		}else if(navigationAction.getType().equalsIgnoreCase(NavigationType.FORWARD)){
+			webDriver.navigate().forward();
+		}else if(navigationAction.getType().equalsIgnoreCase(NavigationType.REDIRECTION)){
+			if(ValidationUtil.isEmpty(navigationAction.getUrl())){
+				throw new WebScrapingException("Redirect url cannot be empty");
+			}
+			webDriver.navigate().to(navigationAction.getUrl());
+		}else if(navigationAction.getType().equalsIgnoreCase(NavigationType.REFRESH)){
+			webDriver.navigate().refresh();
+		}
+		throw new WebScrapingException("Invalid navigation type");
 	}
 	
 	public static void iframeSwitch(WebDriver webDriver,IFrameSwitchAction iFrameSwitchAction) throws WebScrapingException{
-		
+		if(ValidationUtil.isNotEmpty(iFrameSwitchAction.getIdOrName())){
+			webDriver.switchTo().frame(iFrameSwitchAction.getIdOrName());
+		}else if(ValidationUtil.isNotNull(iFrameSwitchAction.getIndex())){
+			webDriver.switchTo().frame(iFrameSwitchAction.getIndex());
+		}else if(ValidationUtil.isNotNull(iFrameSwitchAction.getElementSelector())){
+			webDriver.switchTo().frame(getWebElement(webDriver, iFrameSwitchAction.getElementSelector()));
+		}
+		throw new WebScrapingException("Invalid selector for iframe switch");
 	}
 	
 	@SuppressWarnings("unused")
@@ -71,8 +87,7 @@ public class WebScrapingEngine {
 		return webElements.get(elementSelector.getIndex());
 	}
 
-	@SuppressWarnings("unused")
-	private WebElement getWebElement(WebDriver webDriver,ElementSelector elementSelector) throws WebScrapingException{
+	private static WebElement getWebElement(WebDriver webDriver,ElementSelector elementSelector) throws WebScrapingException{
 		List<WebElement> webElements = getWebElements(webDriver, elementSelector);
 		if(webElements == null || webElements.size() < elementSelector.getIndex()){
 			throw new WebScrapingException("Contains invalid index");
