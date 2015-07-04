@@ -9,6 +9,12 @@ public class ElementSelector implements Serializable {
 	private String identifier;
 	private Integer index = 0;
 
+	public ElementSelector(String type, String identifier) {
+		super();
+		this.type = type;
+		this.identifier = identifier;
+	}
+
 	public String getType() {
 		return type;
 	}

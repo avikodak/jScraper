@@ -2,13 +2,14 @@ package com.jscraper.db.mbeans;
 
 import java.io.Serializable;
 
-public class IFrameSwitchAction implements Serializable{
+public class IFrameSwitchAction extends BaseAction implements Serializable {
 
 	private static final long serialVersionUID = 6994253267073766156L;
-	
+
 	private Integer index;
 	private String idOrName;
 	private ElementSelector elementSelector;
+	private Boolean switchToDefault;
 
 	public Integer getIndex() {
 		return index;
@@ -33,6 +34,13 @@ public class IFrameSwitchAction implements Serializable{
 	public void setElementSelector(ElementSelector elementSelector) {
 		this.elementSelector = elementSelector;
 	}
-	
-	
+
+	public Boolean getSwitchToDefault() {
+		return switchToDefault;
+	}
+
+	public void setSwitchToDefault(Boolean switchToDefault) {
+		this.switchToDefault = switchToDefault;
+	}
+
 }

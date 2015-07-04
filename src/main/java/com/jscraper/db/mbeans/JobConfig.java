@@ -1,6 +1,7 @@
 package com.jscraper.db.mbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobConfig implements Serializable {
@@ -9,8 +10,17 @@ public class JobConfig implements Serializable {
 	private WebDriverDetails webDriverDetails;
 	private Integer jobCount;
 	private String baseUrl;
-	private List<BaseAction> actionsList;
+	private List<BaseAction> actionsList = new ArrayList<BaseAction>();
 
+	public JobConfig(String webDriverType){
+		this.webDriverDetails = new WebDriverDetails(webDriverType);
+	}
+	
+	public JobConfig(String webDriverType,String baseUrl){
+		this.baseUrl = baseUrl;
+		this.webDriverDetails = new WebDriverDetails(webDriverType);
+	}
+	
 	public WebDriverDetails getWebDriverDetails() {
 		return webDriverDetails;
 	}

@@ -4,8 +4,14 @@ public class ClickAction extends BaseAction {
 
 	private static final long serialVersionUID = -5990447015179942448L;
 	private ElementSelector elementSelector;
-	private Boolean clickOnEachElement;
+	private Boolean clickOnEachElement = false;
 	private Boolean doubleClick = false;
+	private Boolean contextClick = false;
+
+	public ClickAction(ElementSelector elementSelector) {
+		super();
+		this.elementSelector = elementSelector;
+	}
 
 	public ElementSelector getElementSelector() {
 		return elementSelector;
@@ -29,6 +35,14 @@ public class ClickAction extends BaseAction {
 
 	public void setDoubleClick(Boolean doubleClick) {
 		this.doubleClick = doubleClick;
+	}
+
+	public Boolean getContextClick() {
+		return contextClick;
+	}
+
+	public void setContextClick(Boolean contextClick) {
+		this.contextClick = contextClick;
 	}
 
 }

@@ -1,26 +1,25 @@
 package com.jscraper.util;
 
-import org.openqa.selenium.WebDriver;
-
+import com.jscraper.constants.ElementSelectorType;
 import com.jscraper.constants.WebDriverType;
-import com.jscraper.db.mbeans.WebDriverDetails;
-import com.jscraper.db.mbeans.WebDriverUtil;
+import com.jscraper.db.mbeans.ClickAction;
+import com.jscraper.db.mbeans.ElementSelector;
+import com.jscraper.db.mbeans.InputAction;
+import com.jscraper.db.mbeans.JobConfig;
+import com.jscraper.scraper.WebScrapingEngine;
 
 
 public class WebDriverUtilTest {
 
 	public static void main(String[] args) throws Exception{
-		WebDriverDetails webDriverDetails = new WebDriverDetails();
-		webDriverDetails.setType(WebDriverType.HTML_UNIT);
-		WebDriver webDriver = WebDriverUtil.getWebDriver(webDriverDetails);
-		webDriver.get("http://www.google.com");
-		System.out.println(webDriver.getTitle());
-		if(ValidationUtil.isNull(webDriver)){
-			System.out.println("Test failed");
-		}else{
-			System.out.println("Test passed");
-		}
-		System.out.println("Hwllo");
+		JobConfig jobConfig = new JobConfig(WebDriverType.FIREFOX,"https://www.facebook.com");
+		ClickAction clickAction = new ClickAction(new ElementSelector(ElementSelectorType.XPATH,".//input[@id='u_0_x']"));
+		InputAction inputAction = new InputAction(new ElementSelector(ElementSelectorType.ID,"email"));
+		inputAction.setValue("avikodak");
+		jobConfig.getActionsList().add(inputAction);
+		jobConfig.getActionsList().add(clickAction);
+		WebScrapingEngine engine = new WebScrapingEngine(jobConfig);
+		engine.startScraping();
 	}
 
 }

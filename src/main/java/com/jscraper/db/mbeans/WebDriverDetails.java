@@ -10,6 +10,11 @@ public class WebDriverDetails {
 	private String version;
 	private BrowsingLocationDetails proxyLocation;
 
+	public WebDriverDetails(String type) {
+		super();
+		this.type = type;
+	}
+
 	public String getType() {
 		return type;
 	}
