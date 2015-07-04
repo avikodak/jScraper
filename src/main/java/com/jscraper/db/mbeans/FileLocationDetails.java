@@ -4,6 +4,11 @@ public class FileLocationDetails {
 
 	private String location;
 
+	public FileLocationDetails(String location) {
+		super();
+		this.location = location;
+	}
+
 	public String getLocation() {
 		return location;
 	}
