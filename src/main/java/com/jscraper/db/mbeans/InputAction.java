@@ -7,7 +7,9 @@ public class InputAction extends BaseAction {
 	private String value;
 	private Boolean inputAllElements = false;
 	private Integer index = 0;
-	
+	private InputConfig inputConfig;
+	private Boolean randomValue = true;
+
 	public InputAction(ElementSelector elementSelector) {
 		super();
 		this.elementSelector = elementSelector;
@@ -27,6 +29,7 @@ public class InputAction extends BaseAction {
 
 	public void setValue(String value) {
 		this.value = value;
+		this.randomValue = false;
 	}
 
 	public Boolean getInputAllElements() {
@@ -45,5 +48,16 @@ public class InputAction extends BaseAction {
 		this.index = index;
 	}
 
-	
+	public Boolean getRandomValue() {
+		return randomValue;
+	}
+
+	public InputConfig getInputConfig() {
+		return inputConfig;
+	}
+
+	public void setInputConfig(InputConfig inputConfig) {
+		this.inputConfig = inputConfig;
+	}
+
 }

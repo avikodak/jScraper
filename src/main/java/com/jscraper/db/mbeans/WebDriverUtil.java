@@ -58,7 +58,8 @@ public class WebDriverUtil {
 	}
 	
 	private static WebDriver getChromeDriver(WebDriverDetails webDriverDetails,DesiredCapabilities desiredCapabilities){
-		ChromeDriver chromeDriver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", webDriverDetails.getExeLocation().getLocation());
+		ChromeDriver chromeDriver = new ChromeDriver(desiredCapabilities);
 		BrowsingLocationDetails proxyLocation = webDriverDetails.getProxyLocation();
 		chromeDriver.setLocation(new Location(proxyLocation.getLatitude(), proxyLocation.getLongitude(), proxyLocation.getAltitude()));
 		return chromeDriver;

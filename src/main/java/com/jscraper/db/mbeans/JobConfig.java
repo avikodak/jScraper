@@ -21,6 +21,11 @@ public class JobConfig implements Serializable {
 		this.webDriverDetails = new WebDriverDetails(webDriverType);
 	}
 	
+	public JobConfig(WebDriverDetails webDriverDetails,String baseUrl){
+		this.baseUrl = baseUrl;
+		this.webDriverDetails = webDriverDetails;
+	}
+	
 	public WebDriverDetails getWebDriverDetails() {
 		return webDriverDetails;
 	}
