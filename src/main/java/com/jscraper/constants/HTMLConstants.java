@@ -9,6 +9,8 @@ public class HTMLConstants {
 	public static final String PASSWORD = "PASSWORD";
 	public static final String NUMBER = "NUMBER";
 	public static final String EMAIL = "EMAIL";
-	public static final String TYPE = "type";
+	public static final String TYPE = "TYPE";
+	public static final String RADIO_BTN = "RADIO";
+	public static final String CHECK_BOX = "CHECKBOX";
 	
 }	

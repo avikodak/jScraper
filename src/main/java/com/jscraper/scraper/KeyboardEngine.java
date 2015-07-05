@@ -52,12 +52,20 @@ public class KeyboardEngine {
 				return InputsGenerator.generateEmail(inputConfig);
 			}else if(type.equalsIgnoreCase(HTMLConstants.NUMBER)){
 				
+			}else if(type.equalsIgnoreCase(HTMLConstants.RADIO_BTN)){
+				
+			}else if(type.equalsIgnoreCase(HTMLConstants.CHECK_BOX)){
+				
 			}
 		}else if(tagType.equalsIgnoreCase(HTMLConstants.TEXT_AREA)){
 			
 		}else if(tagType.equalsIgnoreCase(HTMLConstants.SELECT_TAG)){
 			
 		}
+		return null;
+	}
+	
+	public String getValueTextBox(WebElement webElement,InputConfig inputConfig){
 		return null;
 	}
 }
