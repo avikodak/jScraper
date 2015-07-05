@@ -43,4 +43,8 @@ public class InputsGenerator {
 	public static Long generatePincode(InputConfig inputConfig){
 		return null;
 	}
+	
+	public static String generatePassword(InputConfig inputConfig){
+		return null;
+	}
 }

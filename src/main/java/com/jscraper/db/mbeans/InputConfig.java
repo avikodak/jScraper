@@ -9,6 +9,8 @@ public class InputConfig implements Serializable{
 	private Integer length;
 	private String cardType;
 	private String country;
+	private String value;
+	private Boolean randomValue = true;
 
 	public String getType() {
 		return type;
@@ -40,6 +42,23 @@ public class InputConfig implements Serializable{
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+		this.randomValue = false;
+	}
+
+	public Boolean getRandomValue() {
+		return randomValue;
+	}
+
+	public void setRandomValue(Boolean randomValue) {
+		this.randomValue = randomValue;
 	}
 
 }
